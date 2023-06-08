@@ -20,3 +20,6 @@ from Rye (see `tox.ini`).
 1. Install Rye
 2. `rye sync`
 3. `VIRTUALENV_DISCOVERY=rye rye run tox`
+
+`VIRTUALENV_DISCOVERY` needs to be explicitly set, or set in `toxfile.py`
+(as shown in the repo).
