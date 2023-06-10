@@ -26,7 +26,5 @@ jobs:
       run: |
         source ~/.rye/env
         rye sync
-    - name: Tox
-      run: |
-        source ~/.rye/env
-        rye run tox
+    - name: Tests
+      run: ./tests.sh

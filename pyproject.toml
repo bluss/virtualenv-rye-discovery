@@ -1,6 +1,6 @@
 [project]
 name = "virtualenv-rye-discovery"
-version = "0.1.0"
+version = "0.1.1"
 description = "Use Rye to discover or fetch Python versions"
 authors = [
     { name = "Ulrik Sverdrup", email = "ulrik.sverdrup@gmail.com" }
@@ -18,21 +18,15 @@ classifiers = [
 ]
 
 [build-system]
-requires = [
-    "hatchling",
-]
+requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.rye]
 managed = true
-dev-dependencies = [
-    "tox~=4.6.0",
-]
+dev-dependencies = []
 
 [tool.hatch.metadata]
 allow-direct-references = true
 
 [project.entry-points."virtualenv.discovery"]
 rye = "virtualenv_rye_discovery.plugin:RyeDiscovery"
-
-

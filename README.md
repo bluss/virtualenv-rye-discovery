@@ -1,3 +1,6 @@
+Note: This works is contributed to the community by implementing a solution
+and sharing it, long term maintainership is uncertain.
+
 # virtualenv-rye-discovery
 
 virtualenv plugin to allow discovery of versions through [Rye][rye] - which can
@@ -10,6 +13,9 @@ Currently supports version specs like: py39, cpython39, pypy39.
 This plugin was built to enable Tox version finding through rye.
 Tox 4 instructs that custom python finding happens through virtualenv:
 https://tox.wiki/en/latest/plugins.html
+
+See https://github.com/bluss/tox-rye for the tox configuration "interface"
+plugin for this - prefer installing it and use this functionality through it.
 
 ## Example
 
