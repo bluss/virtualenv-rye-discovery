@@ -14,18 +14,15 @@ This plugin was built to enable Tox version finding through rye.
 Tox 4 instructs that custom python finding happens through virtualenv:
 https://tox.wiki/en/latest/plugins.html
 
+## Example
+
 See https://github.com/bluss/tox-rye for the tox configuration "interface"
 plugin for this - prefer installing it and use this functionality through it.
 
-## Example
-
-Test the example in this repository. The rye project here has tox as a
-dev-dependency for this demo. It will pull down the required versions
-from Rye (see `tox.ini`).
+How to use this with virtualenv:
 
 1. Install Rye
 2. `rye sync`
-3. `VIRTUALENV_DISCOVERY=rye rye run tox`
+3. `VIRTUALENV_DISCOVERY=rye virtualenv -p 3.9 myenv
 
-`VIRTUALENV_DISCOVERY` needs to be explicitly set, or set in `toxfile.py`
-(as shown in the repo).
+`VIRTUALENV_DISCOVERY` needs to be explicitly set in the environment somehow.

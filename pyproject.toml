@@ -25,6 +25,11 @@ build-backend = "hatchling.build"
 managed = true
 dev-dependencies = []
 
+[tool.hatch.build]
+exclude = [
+    "/.github",
+]
+
 [tool.hatch.metadata]
 allow-direct-references = true
 
