@@ -26,3 +26,8 @@ How to use this with virtualenv:
 3. `VIRTUALENV_DISCOVERY=rye virtualenv -p 3.9 myenv`
 
 `VIRTUALENV_DISCOVERY` needs to be explicitly set in the environment to enable.
+
+
+## Other
+
+Requires rye >= 0.7

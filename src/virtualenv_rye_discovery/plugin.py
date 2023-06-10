@@ -2,6 +2,7 @@
 Virtualenv plugin for discovery of Python interpreters through Rye.
 """
 
+import json
 import logging
 import subprocess
 import sys
@@ -57,11 +58,12 @@ class RyeDiscovery(Discover):
                 if rye_fetch.returncode != 0:
                     continue
 
-            list_cmd = ["rye", "toolchain", "list"]
+            # Use --format=json from rye >= 0.7
+            list_cmd = ["rye", "toolchain", "list", "--format=json"]
             LOGGER.info("Running: %r", " ".join(list_cmd))
             rye_list = subprocess.run(list_cmd, capture_output=True, encoding="utf-8", errors="replace")
             if rye_list.returncode != 0:
-                LOGGER.error("Error on rye list (return code: %r)\n%s\n%s\n", rye_list.returncode,
+                LOGGER.error("Error on rye toolchain list (return code: %r)\n%s\n%s\n", rye_list.returncode,
                              rye_list.stdout, rye_list.stderr)
                 continue
             LOGGER.debug("%s", rye_list.stdout)
@@ -79,8 +81,11 @@ def find_match_from_rye(rye_list, python_spec: PythonSpec):
     """
     From rye toolchain list output, find matching python version.
     """
-    for line in rye_list.splitlines():
-        rye_py_version, rye_py_path = line.split(None, maxsplit=1)
+    for record in json.loads(rye_list):
+        rye_py_version = record.get('name')
+        rye_py_path = record.get('path')
+        if not rye_py_version or not rye_py_path:
+            continue
         # turn cpython@3.8 into cpython3.8 which PythonSpec wants
         py_version = rye_py_version.replace("@", "")
         version_spec = PythonSpec.from_string_spec(py_version)
