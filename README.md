@@ -23,9 +23,10 @@ How to use this with virtualenv:
 
 1. Install Rye
 2. `rye sync`
-3. `VIRTUALENV_DISCOVERY=rye virtualenv -p 3.9 myenv`
+3. `virtualenv --discovery rye -p 3.9 myenv`
 
-`VIRTUALENV_DISCOVERY` needs to be explicitly set in the environment to enable.
+If `--discovery` can't be passed directly, then `VIRTUALENV_DISCOVERY=rye`
+cnn be explicitly set in the environment to enable.
 
 
 ## Other
